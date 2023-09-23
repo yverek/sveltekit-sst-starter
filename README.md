@@ -9,7 +9,7 @@ Bootstrap your next SaaS project with this SvelteKit + SST template. :rocket:
 - [x] Generate `SST` monorepo
 - [x] Add `SvelteKit` + `Skeleton` into `packages/web` folder
 - [x] Add [Drizzle ORM](https://orm.drizzle.team)
-- [ ] Add [Lucia](https://github.com/lucia-auth/lucia)
+- [x] Add [Lucia](https://github.com/lucia-auth/lucia)
 - [ ] Add User Management
   - [ ] Login
   - [ ] Logout
@@ -18,8 +18,8 @@ Bootstrap your next SaaS project with this SvelteKit + SST template. :rocket:
   - [ ] Email verification
   - [ ] Simple user dashboard
 - [ ] Add [Lucide](https://lucide.dev/)
-- [ ] Add [Zod](https://github.com/colinhacks/zod)
-- [ ] Add [SuperForms](https://github.com/ciscoheat/sveltekit-superforms)
+- [x] Add [Zod](https://github.com/colinhacks/zod)
+- [x] Add [SuperForms](https://github.com/ciscoheat/sveltekit-superforms)
 - [ ] Add [inlang](https://github.com/inlang/inlang)
 - [ ] Add logging system following [this](https://sst.dev/chapters/setup-error-logging-in-serverless.html)
 - [ ] Add Admin Dashboard using [Salvia Kit](https://github.com/salvia-kit/salvia-kit)
