@@ -1,4 +1,4 @@
-# SvelteKit SaaS boilerplate
+# SvelteKit SST Starter
 
 Bootstrap your next SaaS project with this SvelteKit + SST template. :rocket:
 

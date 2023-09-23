@@ -1,6 +1,6 @@
-import { StackContext, Api, EventBus } from "sst/constructs";
+import { StackContext, Api, EventBus, SvelteKitSite } from "sst/constructs";
 
-export function API({ stack }: StackContext) {
+export function MyStack({ stack }: StackContext) {
   const bus = new EventBus(stack, "bus", {
     defaults: {
       retries: 10,
@@ -20,11 +20,16 @@ export function API({ stack }: StackContext) {
     },
   });
 
+  const site = new SvelteKitSite(stack, "site", {
+    path: "packages/web",
+  });
+
   bus.subscribe("todo.created", {
     handler: "packages/functions/src/events/todo-created.handler",
   });
 
   stack.addOutputs({
     ApiEndpoint: api.url,
+    url: site.url,
   });
 }

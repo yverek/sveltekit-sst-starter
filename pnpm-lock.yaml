@@ -118,6 +118,9 @@ importers:
       svelte-check:
         specifier: ^3.4.3
         version: 3.5.2(@babel/core@7.22.20)(postcss@8.4.30)(svelte@4.2.1)
+      svelte-kit-sst:
+        specifier: ^2.26.4
+        version: 2.26.4
       tailwindcss:
         specifier: 3.3.3
         version: 3.3.3
@@ -6893,6 +6896,10 @@ packages:
       svelte: ^3.19.0 || ^4.0.0
     dependencies:
       svelte: 4.2.1
+    dev: true
+
+  /svelte-kit-sst@2.26.4:
+    resolution: {integrity: sha512-gKZv8Pom5cmw5o8xD24iuZRN1Vg4tj30oALSNEBd/gvZlu2CwcSUtZavKiIYLG1wOD7HsW+Bxes7XUSlHtVsFA==}
     dev: true
 
   /svelte-preprocess@5.0.4(@babel/core@7.22.20)(postcss@8.4.30)(svelte@4.2.1)(typescript@5.2.2):
