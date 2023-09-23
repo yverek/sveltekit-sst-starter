@@ -4,7 +4,7 @@ import { migrate } from "drizzle-orm/postgres-js/migrator";
 import { fromIni } from "@aws-sdk/credential-providers";
 import { RDS } from "sst/node/rds";
 
-const rdsClient = new RDSDataClient({
+export const rdsClient = new RDSDataClient({
   credentials: fromIni({ profile: process.env.AWS_PROFILE }),
   region: "eu-central-1",
 });
@@ -14,7 +14,7 @@ export const db = drizzle(rdsClient, {
   database: RDS.database.defaultDatabaseName,
   secretArn: RDS.database.secretArn,
   resourceArn: RDS.database.clusterArn,
-  logger: true,
+  logger: true, // TODO this should configured dynamically using an environment variable
 });
 
 // TODO should we move this function into a dedicated lambda or using SST Script Construct?
