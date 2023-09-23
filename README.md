@@ -8,7 +8,7 @@ Bootstrap your next SaaS project with this SvelteKit + SST template. :rocket:
 
 - [x] Generate `SST` monorepo
 - [x] Add `SvelteKit` + `Skeleton` into `packages/web` folder
-- [ ] Add [Drizzle ORM](https://orm.drizzle.team)
+- [x] Add [Drizzle ORM](https://orm.drizzle.team)
 - [ ] Add [Lucia](https://github.com/lucia-auth/lucia)
 - [ ] Add User Management
   - [ ] Login
