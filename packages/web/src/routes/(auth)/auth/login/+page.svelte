@@ -6,28 +6,43 @@
 
   export let data: PageData;
 
-  const { form } = superForm(data.form);
+  const { form, errors, constraints } = superForm(data.form);
 </script>
 
-<SuperDebug data={$form} />
-
-<h1>Login</h1>
-
-<!-- {#if form?.message}
-  <p class="error">{form.message}</p>
-{/if} -->
-
 <div class="container h-full mx-auto flex justify-center items-center">
-  <form method="POST" use:enhance>
-    <label for="email">E-mail</label>
-    <input type="email" name="email" bind:value={$form.email} />
-
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" />
+  <div class="space-y-10 text-center flex flex-col items-center">
+    <h1>Login</h1>
+    <form method="POST" use:enhance>
+      <label class="label">
+        <span>E-mail</span>
+        <input
+          type="email"
+          name="email"
+          class="input"
+          bind:value={$form.email}
+          aria-invalid={$errors.email ? 'true' : undefined}
+          {...$constraints.email}
+        />
+      </label>
+      {#if $errors.email}<span>{$errors.email}</span>{/if}
+      <label class="label">
+        <span>Password</span>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="input"
+          bind:value={$form.password}
+          aria-invalid={$errors.password ? 'true' : undefined}
+          {...$constraints.password}
+        />
+      </label>
+      {#if $errors.password}<span>{$errors.password}</span>{/if}
+      <button class="btn variant-filled-surface mt-2">Submit</button>
+    </form>
     <div>
-      <button>Submit</button>
+      <a href="/password-reset">Reset password</a>
+      <a href="/signup">Create an account</a>
     </div>
-  </form>
-  <a href="/password-reset">Reset password</a>
-  <a href="/signup">Create an account</a>
+  </div>
 </div>

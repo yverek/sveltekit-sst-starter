@@ -12,9 +12,10 @@ export const load = (async () => {
 export const actions = {
   default: async ({ request }) => {
     const form = await superValidate(request, loginFormSchema);
-    console.log('POST', form);
 
     if (!form.valid) {
+      // we must not return password to the client
+      form.data.password = '';
       return fail(400, { form });
     }
 
