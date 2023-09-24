@@ -6,6 +6,7 @@ import {
   RDS,
 } from "sst/constructs";
 
+// TODO should we export every stack into a dedicated file?
 export function MyStack({ stack }: StackContext) {
   const rds = new RDS(stack, "database", {
     defaultDatabaseName: "mydb",
@@ -43,6 +44,9 @@ export function MyStack({ stack }: StackContext) {
     path: "packages/web",
     environment: {
       API_ENDPOINT: api.url,
+      RDS_ARN: rds.clusterArn,
+      RDS_SECRET: rds.secretArn,
+      RDS_DATABASE: rds.defaultDatabaseName,
     },
   });
 
@@ -51,10 +55,10 @@ export function MyStack({ stack }: StackContext) {
   });
 
   stack.addOutputs({
-    ApiEndpoint: api.url,
+    apiEndpoint: api.url,
     url: site.url,
-    RDS_ARN: rds.clusterArn,
-    RDS_SECRET: rds.secretArn,
-    RDS_DATABASE: rds.defaultDatabaseName,
+    rdsArn: rds.clusterArn,
+    rdsSecret: rds.secretArn,
+    rdsDatabase: rds.defaultDatabaseName,
   });
 }

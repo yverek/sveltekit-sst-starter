@@ -95,7 +95,7 @@ importers:
         specifier: ^1.20.4
         version: 1.25.0(svelte@4.2.1)(vite@4.4.9)
       '@sveltekit-sst-starter/core':
-        specifier: 0.0.0
+        specifier: workspace:^
         version: link:../core
       '@tailwindcss/forms':
         specifier: 0.5.6
