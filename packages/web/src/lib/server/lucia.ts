@@ -1,8 +1,8 @@
+import { rdsClient } from '@sveltekit-sst-starter/core/src/db/client';
 import { lucia } from 'lucia';
 import { sveltekit } from 'lucia/middleware';
 import { postgres as postgresAdapter } from '@lucia-auth/adapter-postgresql';
 import { dev } from '$app/environment';
-import { rdsClient } from '@sveltekit-sst-starter/core/src/db';
 
 export const auth = lucia({
   env: dev ? 'DEV' : 'PROD',
