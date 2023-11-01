@@ -8,6 +8,9 @@ dependencies:
   '@floating-ui/dom':
     specifier: 1.5.3
     version: 1.5.3
+  pocketbase:
+    specifier: ^0.19.0
+    version: 0.19.0
 
 devDependencies:
   '@playwright/test':
@@ -185,6 +188,9 @@ packages:
   /@aws-cdk/cloud-assembly-schema@2.101.1:
     resolution: {integrity: sha512-zP+5eaOcnEMTZHcVSl8oqrzttKpLm4i1yEMkh7mwbVVAcH6ofd4sPKc8LDkJRWruP47Z9yDtiwx+ly2ZRXG58Q==}
     engines: {node: '>= 14.15.0'}
+    dependencies:
+      jsonschema: 1.4.1
+      semver: 7.5.4
     dev: true
     bundledDependencies:
       - jsonschema
@@ -209,6 +215,7 @@ packages:
       '@aws-cdk/cloud-assembly-schema': 2.101.1
     dependencies:
       '@aws-cdk/cloud-assembly-schema': 2.101.1
+      semver: 7.5.4
     dev: true
     bundledDependencies:
       - semver
@@ -1601,6 +1608,10 @@ packages:
       '@babel/helper-string-parser': 7.22.5
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
+    dev: true
+
+  /@balena/dockerignore@1.0.2:
+    resolution: {integrity: sha512-wMue2Sy4GAVTk6Ic4tJVcnfdau+gx2EnG7S+uAEe+TWJFqE4YoWN4/H8MSLj4eYJKxGg26lZwboEniNiNwZQ6Q==}
     dev: true
 
   /@envelop/core@3.0.6:
@@ -3569,7 +3580,17 @@ packages:
       '@aws-cdk/asset-awscli-v1': 2.2.201
       '@aws-cdk/asset-kubectl-v20': 2.1.2
       '@aws-cdk/asset-node-proxy-agent-v6': 2.0.1
+      '@balena/dockerignore': 1.0.2
+      case: 1.6.3
       constructs: 10.2.69
+      fs-extra: 11.1.1
+      ignore: 5.2.4
+      jsonschema: 1.4.1
+      minimatch: 3.1.2
+      punycode: 2.3.1
+      semver: 7.5.4
+      table: 6.8.1
+      yaml: 1.10.2
     dev: true
     bundledDependencies:
       - '@balena/dockerignore'
@@ -3805,6 +3826,11 @@ packages:
 
   /caniuse-lite@1.0.30001559:
     resolution: {integrity: sha512-cPiMKZgqgkg5LY3/ntGeLFUpi6tzddBNS58A4tnTgQw1zON7u2sZMU7SzOeVH4tj20++9ggL+V6FDOFMTaFFYA==}
+    dev: true
+
+  /case@1.6.3:
+    resolution: {integrity: sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==}
+    engines: {node: '>= 0.8.0'}
     dev: true
 
   /cdk-assets@2.101.1:
@@ -4757,6 +4783,15 @@ packages:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
     dev: true
 
+  /fs-extra@11.1.1:
+    resolution: {integrity: sha512-MGIE4HOvQCeUCzmlHs0vXpih4ysz4wg9qiSAu6cd42lVwPbTM1TjV7RusoyQqMmk/95gdQZX72u+YW+c3eEpFQ==}
+    engines: {node: '>=14.14'}
+    dependencies:
+      graceful-fs: 4.2.11
+      jsonfile: 6.1.0
+      universalify: 2.0.0
+    dev: true
+
   /fs-extra@9.1.0:
     resolution: {integrity: sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==}
     engines: {node: '>=10'}
@@ -5341,6 +5376,10 @@ packages:
       universalify: 2.0.0
     optionalDependencies:
       graceful-fs: 4.2.11
+    dev: true
+
+  /jsonschema@1.4.1:
+    resolution: {integrity: sha512-S6cATIPVv1z0IlxdN+zUk5EPjkGCdnhN4wVSBlvoUO1tOLJootbo9CquNJmbIh4yikWHiUedhRYrNPn1arpEmQ==}
     dev: true
 
   /keyv@4.5.4:
@@ -6074,6 +6113,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /pocketbase@0.19.0:
+    resolution: {integrity: sha512-bUVZfVdD17K8GnwbeDMZPEdREVg2YE0F8uHPDC0zer4VtwXUqoPCCeudTy3fhUE7pfuKnfpuPxeBSYsBY3AGIQ==}
+    dev: false
 
   /postcss-import@15.1.0(postcss@8.4.31):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
