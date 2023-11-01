@@ -9,9 +9,9 @@ Bootstrap your next SaaS project with this SvelteKit + PocketBase + SST template
 - [x] Generate [Skeleton](https://www.skeleton.dev) project
 - [x] Add [SST](https://sst.dev)
 - [x] Add [PocketBase](https://pocketbase.io)
-- [ ] Add [Lucide](https://lucide.dev/)
-- [ ] Add [Zod](https://github.com/colinhacks/zod)
-- [ ] Add [SuperForms](https://github.com/ciscoheat/sveltekit-superforms)
+- [x] Add [Lucide](https://lucide.dev/)
+- [x] Add [Zod](https://github.com/colinhacks/zod)
+- [x] Add [SuperForms](https://github.com/ciscoheat/sveltekit-superforms)
 - [ ] Add User Management
   - [ ] Login
   - [ ] Logout
