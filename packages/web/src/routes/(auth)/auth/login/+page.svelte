@@ -2,11 +2,10 @@
   import { superForm } from 'sveltekit-superforms/client';
   import { enhance } from '$app/forms';
   import type { PageData } from './$types';
-  import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte';
 
   export let data: PageData;
 
-  const { form, errors, constraints } = superForm(data.form);
+  const { form, errors } = superForm(data.form);
 </script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
@@ -19,12 +18,12 @@
           type="email"
           name="email"
           class="input"
+          class:input-error={$errors.email}
           bind:value={$form.email}
           aria-invalid={$errors.email ? 'true' : undefined}
-          {...$constraints.email}
         />
       </label>
-      {#if $errors.email}<span>{$errors.email}</span>{/if}
+      {#if $errors.email}<span>{$errors.email[0]}</span>{/if}
       <label class="label">
         <span>Password</span>
         <input
@@ -32,12 +31,12 @@
           name="password"
           id="password"
           class="input"
+          class:input-error={$errors.email}
           bind:value={$form.password}
           aria-invalid={$errors.password ? 'true' : undefined}
-          {...$constraints.password}
         />
       </label>
-      {#if $errors.password}<span>{$errors.password}</span>{/if}
+      {#if $errors.password}<span>{$errors.password[0]}</span>{/if}
       <button class="btn variant-filled-surface mt-2">Submit</button>
     </form>
     <div>

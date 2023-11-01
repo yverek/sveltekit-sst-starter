@@ -11,8 +11,8 @@ Bootstrap your next SaaS project with this SvelteKit + SST template. :rocket:
 - [x] Add [Drizzle ORM](https://orm.drizzle.team)
 - [x] Add [Lucia](https://github.com/lucia-auth/lucia)
 - [ ] Add User Management
-  - [ ] Login
-  - [ ] Logout
+  - [x] Login
+  - [x] Logout
   - [ ] Register
   - [ ] Reset password
   - [ ] Email verification
@@ -25,6 +25,7 @@ Bootstrap your next SaaS project with this SvelteKit + SST template. :rocket:
 - [ ] Add Admin Dashboard using [Salvia Kit](https://github.com/salvia-kit/salvia-kit)
 - [ ] Add [Stripe](https://stripe.com/it)
 - [ ] Add Cookie Consent component
+- [ ] Add [Storybook](https://storybook.js.org)
 - [ ] Add Google Analytics
 - [ ] Add [Husky](https://github.com/typicode/husky)
 - [ ] Add `Feature Request` and `Bug Report` templates
