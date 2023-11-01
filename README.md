@@ -15,7 +15,7 @@ Bootstrap your next SaaS project with this SvelteKit + PocketBase + SST template
 - [ ] Add User Management
   - [ ] Login
   - [ ] Logout
-  - [ ] Register
+  - [x] Register
   - [ ] Reset password
   - [ ] Email verification
   - [ ] Simple user dashboard
