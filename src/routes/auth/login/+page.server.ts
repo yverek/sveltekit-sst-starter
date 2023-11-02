@@ -28,6 +28,7 @@ export const actions = {
 
       if (!verified) {
         locals.pb.authStore.clear();
+
         return fail(401, { message: "You must verify your email to login" });
       }
     } catch (error) {
@@ -40,6 +41,6 @@ export const actions = {
       return fail(500, { message: "Something went wrong" });
     }
 
-    throw redirect(303, "/auth/login");
+    throw redirect(303, "/dashboard");
   }
 } satisfies Actions;

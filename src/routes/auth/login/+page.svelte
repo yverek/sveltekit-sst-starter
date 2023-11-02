@@ -1,9 +1,9 @@
 <script lang="ts">
   import { AlertTriangle, XCircle } from "lucide-svelte";
-  import { enhance } from "$app/forms";
-  import type { PageData } from "./$types";
   import { superForm } from "sveltekit-superforms/client";
   import { page } from "$app/stores";
+  import { enhance } from "$app/forms";
+  import type { PageData } from "./$types";
 
   export let data: PageData;
 
