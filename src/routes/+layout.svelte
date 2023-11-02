@@ -17,14 +17,16 @@
     <!-- App Bar -->
     <AppBar>
       <svelte:fragment slot="lead">
-        <strong class="text-xl uppercase">Skeleton</strong>
+        <a href="/" class="href">
+          <strong class="text-xl uppercase">Skeleton</strong>
+        </a>
       </svelte:fragment>
       <svelte:fragment slot="trail">
         {#if !data.user}
           <a class="btn btn-sm" href="/auth/login">Login</a>
           <a class="btn btn-sm" href="/auth/register">Signup</a>
         {:else}
-          <div>Welcome {data.user}</div>
+          <div>Welcome {data.user.name}</div>
         {/if}
       </svelte:fragment>
     </AppBar>

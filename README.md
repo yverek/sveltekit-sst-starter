@@ -13,7 +13,7 @@ Bootstrap your next SaaS project with this SvelteKit + PocketBase + SST template
 - [x] Add [Zod](https://github.com/colinhacks/zod)
 - [x] Add [SuperForms](https://github.com/ciscoheat/sveltekit-superforms)
 - [ ] Add User Management
-  - [ ] Login
+  - [x] Login
   - [ ] Logout
   - [x] Register
   - [ ] Reset password
