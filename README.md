@@ -14,7 +14,7 @@ Bootstrap your next SaaS project with this SvelteKit + PocketBase + SST template
 - [x] Add [SuperForms](https://github.com/ciscoheat/sveltekit-superforms)
 - [ ] Add User Management
   - [x] Login
-  - [ ] Logout
+  - [x] Logout
   - [x] Register
   - [ ] Reset password
   - [ ] Email verification

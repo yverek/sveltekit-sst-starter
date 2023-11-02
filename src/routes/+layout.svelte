@@ -27,6 +27,9 @@
           <a class="btn btn-sm" href="/auth/register">Signup</a>
         {:else}
           <div>Welcome {data.user.name}</div>
+          <form action="/auth/logout" method="post">
+            <button type="submit" class="btn btn-sm">Logout</button>
+          </form>
         {/if}
       </svelte:fragment>
     </AppBar>
