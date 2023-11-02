@@ -2,6 +2,7 @@ import { fail, type Actions, redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import { superValidate } from "sveltekit-superforms/server";
 import { registerFormSchema } from "$lib/zod-schemas";
+import { ClientResponseError } from "pocketbase";
 
 export const load = (async () => {
   const form = await superValidate(registerFormSchema);
@@ -12,23 +13,28 @@ export const load = (async () => {
 export const actions = {
   default: async ({ request, locals }) => {
     const form = await superValidate(request, registerFormSchema);
-    console.log("POST", form);
 
     if (!form.valid) {
       // we must not return password to the client
       form.data.password = "";
       form.data.passwordConfirm = "";
 
-      return fail(400, { form });
+      throw fail(400, { form });
     }
 
     try {
-      // TODO check this
-      await locals.pb.collection("users").create(form.data);
-      await locals.pb.collection("users").requestVerification(form.data.email);
+      const { data } = form;
+
+      await locals.pb.collection("users").create(data);
+      await locals.pb.collection("users").requestVerification(data.email);
     } catch (error) {
-      console.log("Error: ", error);
-      // throw error(500, "Something went wrong");
+      if (error instanceof ClientResponseError) {
+        const { code, message, data } = error.response;
+
+        return fail(code, { message, data });
+      }
+
+      return fail(500, { message: "Something went wrong" });
     }
 
     throw redirect(303, "/auth/login");

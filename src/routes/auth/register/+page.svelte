@@ -1,7 +1,9 @@
 <script lang="ts">
-  import { enhance } from "$app/forms";
-  import type { PageData } from "./$types";
+  import { AlertTriangle, XCircle } from "lucide-svelte";
   import { superForm } from "sveltekit-superforms/client";
+  import { enhance } from "$app/forms";
+  import { page } from "$app/stores";
+  import type { PageData } from "./$types";
 
   export let data: PageData;
 
@@ -70,6 +72,17 @@
       </label>
 
       <button class="mt-5 btn variant-filled">Register</button>
+
+      {#if $page.status === 400 || $page.status === 403}
+        <aside class="alert variant-filled-error mt-4">
+          <div><AlertTriangle /></div>
+          <div class="alert-message">
+            <h3 class="h3">Error!</h3>
+            <p>{$page.form.message}</p>
+          </div>
+          <div class="alert-actions"><XCircle /></div>
+        </aside>
+      {/if}
     </form>
   </div>
 </div>
