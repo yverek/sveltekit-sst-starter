@@ -40,7 +40,15 @@ export const actions = {
       return message(form, "Something went wrong", { status: 500 });
     }
 
-    const redirectTo = url.searchParams.get("redirectTo");
+    let redirectTo = url.searchParams.get("redirectTo");
+
+    if (redirectTo) {
+      // with this line we are forcing to redirect to our domain
+      // for example, if they pass a malicious domain like localhost:5173/auth/login?redirectTo=http://virus.com
+      // the redirect to the malicious domain won't work because the will throw a 404
+      // instead if it's a legit url like localhost:5173/auth/login?redirectTo=/admin it will work
+      redirectTo = `/${redirectTo.slice(1)}`;
+    }
 
     throw redirect(303, redirectTo ?? "/dashboard");
   }
