@@ -1,13 +1,13 @@
 import { redirect } from "@sveltejs/kit";
 import type { LayoutServerLoad } from "./$types";
+import { handleLoginRedirect } from "$lib/utils/handle-login-redirect";
 
-export const load = (async ({ locals, url }) => {
-  if (!locals.user) {
-    const { pathname, search } = url;
-    const fromUrl = pathname + search;
+export const load = (async (event) => {
+  const { user } = event.locals;
 
-    throw redirect(303, `/auth/login?redirectTo=${fromUrl}`);
+  if (!user) {
+    throw redirect(303, handleLoginRedirect(event));
   }
 
-  return { user: locals.user };
+  return { user };
 }) satisfies LayoutServerLoad;

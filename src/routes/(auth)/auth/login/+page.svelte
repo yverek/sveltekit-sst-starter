@@ -10,13 +10,14 @@
 
   const { form, errors, constraints, message, enhance } = superForm(data.form);
 
-  $: if ($message) {
+  $: if ($message || $page.url.searchParams.get("message")) {
     const t: ToastSettings = {
-      message: $message,
+      message: $message || $page.url.searchParams.get("message"),
       timeout: 5000,
       hoverable: true,
-      background: $page.status === 200 ? "variant-filled-success" : "variant-filled-error"
+      background: $page.status === 200 && !$page.url.searchParams.get("message") ? "variant-filled-success" : "variant-filled-error"
     };
+
     toastStore.trigger(t);
   }
 </script>
