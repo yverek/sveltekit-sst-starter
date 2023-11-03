@@ -1,6 +1,6 @@
 import { fail, type Actions, redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
-import { superValidate } from "sveltekit-superforms/server";
+import { message, superValidate } from "sveltekit-superforms/server";
 import { registerFormSchema } from "$lib/zod-schemas";
 import { ClientResponseError } from "pocketbase";
 
@@ -19,7 +19,7 @@ export const actions = {
       form.data.password = "";
       form.data.passwordConfirm = "";
 
-      throw fail(400, { form });
+      return message(form, "Invalid form");
     }
 
     try {
@@ -29,12 +29,12 @@ export const actions = {
       await locals.pb.collection("users").requestVerification(data.email);
     } catch (error) {
       if (error instanceof ClientResponseError) {
-        const { code, message, data } = error.response;
+        const { code, message } = error.response;
 
-        return fail(code, { message, data });
+        return message(form, message, { status: code });
       }
 
-      return fail(500, { message: "Something went wrong" });
+      return message(form, "Something went wrong", { status: 500 });
     }
 
     throw redirect(303, "/auth/login");

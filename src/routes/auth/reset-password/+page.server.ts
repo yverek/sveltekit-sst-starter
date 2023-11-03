@@ -5,7 +5,9 @@ import type { PageServerLoad } from "./$types";
 import { resetPasswordFormSchema } from "$lib/zod-schemas";
 
 export const load = (async () => {
-  return {};
+  const form = await superValidate(resetPasswordFormSchema);
+
+  return { form };
 }) satisfies PageServerLoad;
 
 export const actions = {

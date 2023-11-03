@@ -1,13 +1,24 @@
 <script lang="ts">
-  import { AlertTriangle, XCircle } from "lucide-svelte";
   import { superForm } from "sveltekit-superforms/client";
-  import { enhance } from "$app/forms";
   import { page } from "$app/stores";
   import type { PageData } from "./$types";
+  import { getToastStore, type ToastSettings } from "@skeletonlabs/skeleton";
+
+  const toastStore = getToastStore();
 
   export let data: PageData;
 
-  const { form, errors, constraints } = superForm(data.form);
+  const { form, errors, constraints, message, enhance } = superForm(data.form);
+
+  $: if ($message) {
+    const t: ToastSettings = {
+      message: $message,
+      timeout: 5000,
+      hoverable: true,
+      background: $page.status === 200 ? "variant-filled-success" : "variant-filled-error"
+    };
+    toastStore.trigger(t);
+  }
 </script>
 
 <!-- TODO this should be exported to a layout.svelte file -->
@@ -72,17 +83,6 @@
       </label>
 
       <button class="mt-5 btn variant-filled">Register</button>
-
-      {#if $page.status === 400 || $page.status === 403}
-        <aside class="alert variant-filled-error mt-4">
-          <div><AlertTriangle /></div>
-          <div class="alert-message">
-            <h3 class="h3">Error!</h3>
-            <p>{$page.form.message}</p>
-          </div>
-          <div class="alert-actions"><XCircle /></div>
-        </aside>
-      {/if}
     </form>
   </div>
 </div>

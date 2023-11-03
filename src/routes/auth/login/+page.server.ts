@@ -1,5 +1,5 @@
 import { ClientResponseError } from "pocketbase";
-import { superValidate } from "sveltekit-superforms/server";
+import { message, superValidate } from "sveltekit-superforms/server";
 import { fail, type Actions, redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import { loginFormSchema } from "$lib/zod-schemas";
@@ -18,7 +18,7 @@ export const actions = {
       // we must not return password to the client
       form.data.password = "";
 
-      return fail(400, { form });
+      return message(form, "Invalid form");
     }
 
     try {
@@ -29,16 +29,16 @@ export const actions = {
       if (!verified) {
         locals.pb.authStore.clear();
 
-        return fail(401, { message: "You must verify your email to login" });
+        return message(form, "You must verify your email to login", { status: 401 });
       }
     } catch (error) {
       if (error instanceof ClientResponseError) {
-        const { code, message, data } = error.response;
+        const { code, message } = error.response;
 
-        return fail(code, { message, data });
+        return message(form, message, { status: code });
       }
 
-      return fail(500, { message: "Something went wrong" });
+      return message(form, "Something went wrong", { status: 500 });
     }
 
     throw redirect(303, "/dashboard");

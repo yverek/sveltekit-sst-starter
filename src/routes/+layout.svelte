@@ -1,15 +1,20 @@
 <script lang="ts">
   import "../app.postcss";
   import type { LayoutData } from "./$types";
-  import { AppShell, AppBar } from "@skeletonlabs/skeleton";
+  import { AppShell, AppBar, Toast } from "@skeletonlabs/skeleton";
 
   // Floating UI for Popups
   import { computePosition, autoUpdate, flip, shift, offset, arrow } from "@floating-ui/dom";
-  import { storePopup } from "@skeletonlabs/skeleton";
+  import { storePopup, initializeStores } from "@skeletonlabs/skeleton";
+
   storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+
+  initializeStores();
 
   export let data: LayoutData;
 </script>
+
+<Toast position="t" />
 
 <!-- App Shell -->
 <AppShell>
