@@ -5,6 +5,7 @@
   export let data: LayoutData;
 </script>
 
+<!-- TODO this should be changed into dashboard layout -->
 <!-- App Shell -->
 <AppShell>
   <svelte:fragment slot="header">
@@ -16,15 +17,10 @@
         </a>
       </svelte:fragment>
       <svelte:fragment slot="trail">
-        {#if !data.user}
-          <a class="btn btn-sm" href="/auth/login">Login</a>
-          <a class="btn btn-sm" href="/auth/register">Signup</a>
-        {:else}
-          <div>Welcome {data.user.name}</div>
-          <form action="/auth/logout" method="post">
-            <button type="submit" class="btn btn-sm">Logout</button>
-          </form>
-        {/if}
+        <div>Welcome {data.user.name}</div>
+        <form action="/auth/logout" method="post">
+          <button type="submit" class="btn btn-sm">Logout</button>
+        </form>
       </svelte:fragment>
     </AppBar>
   </svelte:fragment>

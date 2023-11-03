@@ -11,7 +11,7 @@ export const load = (async () => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-  default: async ({ request, locals }) => {
+  default: async ({ request, locals, url }) => {
     const form = await superValidate(request, loginFormSchema);
 
     if (!form.valid) {
@@ -40,6 +40,8 @@ export const actions = {
       return message(form, "Something went wrong", { status: 500 });
     }
 
-    throw redirect(303, "/dashboard");
+    const redirectTo = url.searchParams.get("redirectTo");
+
+    throw redirect(303, redirectTo ?? "/dashboard");
   }
 } satisfies Actions;
