@@ -21,7 +21,7 @@ export const actions = {
 
       await locals.pb.collection("users").requestPasswordReset(data.email);
 
-      return message(form, "We have sent an email to your address");
+      return message(form, "An email has been sent to reset your password!");
     } catch (error) {
       if (error instanceof ClientResponseError) {
         const { code, message } = error.response;

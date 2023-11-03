@@ -16,8 +16,8 @@ Bootstrap your next SaaS project with this SvelteKit + PocketBase + SST template
   - [x] Login
   - [x] Logout
   - [x] Register
-  - [ ] Reset password
-  - [ ] Email verification
+  - [x] Reset password
+  - [x] Email verification
   - [ ] Simple user dashboard
 - [ ] Add [inlang](https://github.com/inlang/inlang)
 - [ ] Add logging system following [this](https://sst.dev/chapters/setup-error-logging-in-serverless.html) using [Winston](http://github.com/winstonjs/winston)

@@ -45,6 +45,8 @@
         />
       </label>
 
+      <a href="/auth/reset-password">Forgot password?</a>
+
       <button class="mt-5 btn variant-filled">Login</button>
 
       {#if $page.status === 400 || $page.status === 401}
