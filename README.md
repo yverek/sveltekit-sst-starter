@@ -20,7 +20,8 @@ Bootstrap your next SaaS project with this SvelteKit + PocketBase + SST template
   - [ ] Email verification
   - [ ] Simple user dashboard
 - [ ] Add [inlang](https://github.com/inlang/inlang)
-- [ ] Add logging system following [this](https://sst.dev/chapters/setup-error-logging-in-serverless.html)
+- [ ] Add logging system following [this](https://sst.dev/chapters/setup-error-logging-in-serverless.html) using [Winston](http://github.com/winstonjs/winston)
+- [ ] Add [Bruno](https://www.usebruno.com)
 - [ ] Add Admin Dashboard using [Salvia Kit](https://github.com/salvia-kit/salvia-kit)
 - [ ] Add [Stripe](https://stripe.com/it)
 - [ ] Add Cookie Consent component
