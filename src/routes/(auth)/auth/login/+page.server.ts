@@ -1,6 +1,6 @@
 import { ClientResponseError } from "pocketbase";
 import { message, superValidate } from "sveltekit-superforms/server";
-import { fail, type Actions, redirect } from "@sveltejs/kit";
+import { redirect, type Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import { loginFormSchema } from "$lib/zod-schemas";
 
@@ -15,7 +15,6 @@ export const actions = {
     const form = await superValidate(request, loginFormSchema);
 
     if (!form.valid) {
-      // we must not return password to the client
       form.data.password = "";
 
       return message(form, "Invalid form");

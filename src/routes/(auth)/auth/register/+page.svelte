@@ -27,7 +27,7 @@
   <div class="space-y-10 text-center flex flex-col items-center">
     <div>
       <h3 class="h3">Register for an account</h3>
-      <p>Or <a href="/auth/register" class="text-primary-500">sign in</a> if you already have an account.</p>
+      <p>Or <a href="/auth/login" class="text-primary-500">sign in</a> if you already have an account.</p>
     </div>
     <form method="post" use:enhance>
       <label class="label">

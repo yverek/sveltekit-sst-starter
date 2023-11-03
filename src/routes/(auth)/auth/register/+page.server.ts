@@ -1,4 +1,4 @@
-import { fail, type Actions, redirect } from "@sveltejs/kit";
+import { redirect, type Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import { message, superValidate } from "sveltekit-superforms/server";
 import { registerFormSchema } from "$lib/zod-schemas";
@@ -15,7 +15,6 @@ export const actions = {
     const form = await superValidate(request, registerFormSchema);
 
     if (!form.valid) {
-      // we must not return password to the client
       form.data.password = "";
       form.data.passwordConfirm = "";
 
