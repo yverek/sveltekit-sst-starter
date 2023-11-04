@@ -5,8 +5,6 @@
   import { page } from "$app/stores";
 
   export let data: LayoutData;
-
-  let currentTile: number = 0;
 </script>
 
 <!-- TODO this should be changed into dashboard layout -->
@@ -14,7 +12,7 @@
   <svelte:fragment slot="header">
     <AppBar>
       <svelte:fragment slot="lead">
-        <a href="/dashboard">
+        <a href="/">
           <img src="/favicon.png" class="ml-2 h-8" alt="Skeleton Logo" />
         </a>
       </svelte:fragment>
