@@ -1,6 +1,5 @@
 <script lang="ts">
   import { superForm } from "sveltekit-superforms/client";
-  import { page } from "$app/stores";
   import type { PageData } from "./$types";
   import { getToastStore, type ToastSettings } from "@skeletonlabs/skeleton";
 
@@ -10,12 +9,12 @@
 
   const { form, errors, constraints, message, enhance } = superForm(data.form);
 
-  $: if ($message || $page.url.searchParams.get("message")) {
+  $: if ($message) {
     const t: ToastSettings = {
-      message: $message || $page.url.searchParams.get("message"),
+      message: $message,
       timeout: 5000,
       hoverable: true,
-      background: $page.status === 200 && !$page.url.searchParams.get("message") ? "variant-filled-success" : "variant-filled-error"
+      background: "variant-filled-error"
     };
 
     toastStore.trigger(t);

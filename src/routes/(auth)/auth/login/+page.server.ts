@@ -4,8 +4,11 @@ import { redirect, type Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import { loginFormSchema } from "$lib/zod-schemas";
 
-export const load = (async () => {
+export const load = (async ({ url }) => {
+  const message = url.searchParams.get("redirectTo") && "You must be logged in to access this page";
   const form = await superValidate(loginFormSchema);
+
+  form.message = message;
 
   return { form };
 }) satisfies PageServerLoad;

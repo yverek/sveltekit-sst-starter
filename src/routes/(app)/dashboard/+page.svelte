@@ -5,3 +5,6 @@
 </script>
 
 Dashboard
+<pre class="pre mt-4">
+  {JSON.stringify(data, null, 2)}
+</pre>
