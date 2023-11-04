@@ -2,12 +2,11 @@ import { redirect } from "@sveltejs/kit";
 import type { LayoutServerLoad } from "./$types";
 import { handleLoginRedirect } from "$lib/utils/handle-login-redirect";
 
+// TODO add a "role" field and a control in this load function to check is user is actually an admin
 export const load = (async (event) => {
   const { user } = event.locals;
 
   if (!user) {
     throw redirect(303, handleLoginRedirect(event));
   }
-
-  return { user };
 }) satisfies LayoutServerLoad;

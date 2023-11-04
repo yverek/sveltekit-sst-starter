@@ -8,6 +8,4 @@ export const load = (async (event) => {
   if (!user) {
     throw redirect(303, handleLoginRedirect(event));
   }
-
-  return { user };
 }) satisfies LayoutServerLoad;
