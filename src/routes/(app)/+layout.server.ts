@@ -3,9 +3,7 @@ import type { LayoutServerLoad } from "./$types";
 import { handleLoginRedirect } from "$lib/utils/handle-login-redirect";
 
 export const load = (async (event) => {
-  const { user } = event.locals;
-
-  if (!user) {
+  if (!event.locals.pb.authStore.isValid) {
     throw redirect(303, handleLoginRedirect(event));
   }
 }) satisfies LayoutServerLoad;

@@ -4,9 +4,7 @@ import { handleLoginRedirect } from "$lib/utils/handle-login-redirect";
 
 // TODO add a "role" field and a control in this load function to check is user is actually an admin
 export const load = (async (event) => {
-  const { user } = event.locals;
-
-  if (!user) {
+  if (!event.locals.pb.authStore.isValid) {
     throw redirect(303, handleLoginRedirect(event));
   }
 }) satisfies LayoutServerLoad;
