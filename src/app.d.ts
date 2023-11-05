@@ -1,4 +1,4 @@
-import type { Admin, Record } from "pocketbase";
+import type { Record } from "pocketbase";
 
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
@@ -9,7 +9,7 @@ declare global {
 
     interface Locals {
       pb: PocketBase;
-      user: Admin | Record | null;
+      user: Record | null;
     }
     // interface PageData {}
     // interface Error {}
