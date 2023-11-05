@@ -1,13 +1,12 @@
 <script lang="ts">
-  import { AppShell, AppBar, AppRail, AppRailAnchor, AppRailTile } from "@skeletonlabs/skeleton";
-  import { PieChart, Search, Settings, Wallet } from "lucide-svelte";
+  import { AppShell, AppBar, AppRail, AppRailAnchor, Avatar } from "@skeletonlabs/skeleton";
+  import { LogOut, PieChart, Search, Settings, Wallet } from "lucide-svelte";
   import type { LayoutData } from "./$types";
   import { page } from "$app/stores";
 
   export let data: LayoutData;
 </script>
 
-<!-- TODO this should be changed into dashboard layout -->
 <AppShell>
   <svelte:fragment slot="header">
     <AppBar>
@@ -18,8 +17,11 @@
       </svelte:fragment>
       <svelte:fragment slot="trail">
         <div>Welcome {data.user.name}</div>
+        <Avatar src={data.user.avatar} width="w-10" rounded="rounded-full" initials="MD" />
         <form action="/auth/logout" method="post">
-          <button type="submit" class="btn btn-sm">Logout</button>
+          <button type="submit" class="btn-icon w-10 hover:variant-filled-primary">
+            <span><LogOut /></span>
+          </button>
         </form>
       </svelte:fragment>
     </AppBar>
