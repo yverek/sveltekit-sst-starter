@@ -65,15 +65,15 @@
           </span>
           <div class="sm:flex sm:items-center sm:justify-between">
             <div class="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
-              <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+              <a href="facebook.com" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                 <Facebook />
                 <span class="sr-only">Facebook page</span>
               </a>
-              <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+              <a href="twitter.com" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                 <Twitter />
                 <span class="sr-only">Twitter page</span>
               </a>
-              <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+              <a href="instagram.com" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                 <Instagram />
                 <span class="sr-only">Instagram account</span>
               </a>
