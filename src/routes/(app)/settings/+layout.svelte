@@ -1,5 +1,7 @@
 <script>
   import { page } from "$app/stores";
+
+  // TODO move this into $lib/constants
   const navigation = [
     {
       title: "Profile",
@@ -16,17 +18,15 @@
   ];
 </script>
 
-<div class="w-full h-full px-2">
+<div class="w-full h-full p-6">
   <h3 class="text-2xl font-medium">Settings</h3>
   <div class="divider" />
   <div class="flex w-full space-x-4">
-    <ul class="menu bg-base-100 w-56 p-2 rounded-box">
+    <div class="btn-group-vertical">
       {#each navigation as { href, title }}
-        <li>
-          <a {href} class="font-medium" class:bg-primary-500={$page.url.pathname === href}>{title}</a>
-        </li>
+        <a {href} class="font-medium" class:bg-primary-500={$page.url.pathname === href}>{title}</a>
       {/each}
-    </ul>
+    </div>
     <div class="w-full">
       <slot />
     </div>
