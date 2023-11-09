@@ -2,8 +2,8 @@ import { redirect } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ locals }) => {
-  locals.pb.authStore.clear();
-  locals.user = undefined;
+  await locals.supabase.auth.signOut();
+  locals.user = null;
 
   throw redirect(303, "/");
 };
