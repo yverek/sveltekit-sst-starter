@@ -8,17 +8,17 @@ Bootstrap your next SaaS project with this SvelteKit + PocketBase + SST template
 
 - [x] Generate [Skeleton](https://www.skeleton.dev) project
 - [x] Add [SST](https://sst.dev)
-- [x] Add [PocketBase](https://pocketbase.io)
+- [x] Add [Supabase](https://supabase.com)
 - [x] Add [Lucide](https://lucide.dev/)
 - [x] Add [Zod](https://github.com/colinhacks/zod)
 - [x] Add [SuperForms](https://github.com/ciscoheat/sveltekit-superforms)
-- [ ] Add User Management
+- [x] Add User Management
   - [x] Login
   - [x] Logout
   - [x] Register
   - [x] Reset password
   - [x] Email verification
-  - [ ] Simple user dashboard
+  - [x] Simple user dashboard
 - [ ] Add [inlang](https://github.com/inlang/inlang)
 - [ ] Add logging system following [this](https://sst.dev/chapters/setup-error-logging-in-serverless.html) using [Winston](http://github.com/winstonjs/winston)
 - [ ] Add [Bruno](https://www.usebruno.com)
