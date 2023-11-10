@@ -1,6 +1,6 @@
 # SvelteKit SST Starter
 
-Bootstrap your next SaaS project with this SvelteKit + PocketBase + SST template. :rocket:
+Bootstrap your next SaaS project with this SvelteKit + Supabase + SST template. :rocket:
 
 ## Roadmap
 
@@ -53,3 +53,11 @@ pnpm run build
 You can preview the production build with `pnpm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Deploy
+
+```bash
+pnpm sst secrets set PUBLIC_SUPABASE_URL supabaseUrlValue
+pnpm sst secrets set PUBLIC_SUPABASE_ANON_KEY supabaseAnonKeyValue
+pnpm sst deploy --stage prod
+```
