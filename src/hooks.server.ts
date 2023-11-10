@@ -1,9 +1,10 @@
 import { createServerClient } from "@supabase/ssr";
 import type { Handle } from "@sveltejs/kit";
 import { Config } from "sst/node/config";
+import type { Database } from "./database.types";
 
 export const handle: Handle = async ({ event, resolve }) => {
-  event.locals.supabase = createServerClient(Config.SUPABASE_URL, Config.SUPABASE_ANON_KEY, {
+  event.locals.supabase = createServerClient<Database>(Config.SUPABASE_URL, Config.SUPABASE_ANON_KEY, {
     cookies: {
       get: (key) => event.cookies.get(key),
       set: (key, value, options) => {
