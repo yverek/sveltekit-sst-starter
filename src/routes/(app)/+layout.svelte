@@ -16,8 +16,8 @@
         </a>
       </svelte:fragment>
       <svelte:fragment slot="trail">
-        <div>Welcome {data.user.name}</div>
-        <Avatar src={data.user.avatar} width="w-10" rounded="rounded-full" initials="MD" />
+        <div>Welcome {data.session?.user.email}</div>
+        <!-- <Avatar src={data.user.avatar} width="w-10" rounded="rounded-full" initials="MD" /> -->
         <form action="/auth/logout" method="post">
           <button type="submit" class="btn-icon w-10 hover:variant-filled-primary">
             <span><LogOut /></span>
