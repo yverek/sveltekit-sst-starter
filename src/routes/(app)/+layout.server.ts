@@ -3,6 +3,7 @@ import type { LayoutServerLoad } from "./$types";
 import { handleLoginRedirect } from "$lib/utils/handle-login-redirect";
 
 export const load = (async (event) => {
+  const data = await event.parent();
   const session = await event.locals.getSession();
 
   if (!session) {
@@ -10,5 +11,8 @@ export const load = (async (event) => {
     throw redirect(303, handleLoginRedirect(event));
   }
 
-  return { session, user: session.user };
+  const { user } = session;
+  const { profile } = data;
+
+  return { session, user, profile };
 }) satisfies LayoutServerLoad;
