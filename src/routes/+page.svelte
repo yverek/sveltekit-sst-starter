@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { LayoutData } from "./$types";
+  import type { PageData } from "./$types";
   import { AppShell, AppBar } from "@skeletonlabs/skeleton";
   import { Facebook, Twitter, Instagram } from "lucide-svelte";
 
-  export let data: LayoutData;
+  export let data: PageData;
 </script>
 
 <AppShell regionPage="hide-scrollbar">
