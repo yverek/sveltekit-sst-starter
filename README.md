@@ -1,6 +1,6 @@
 # SvelteKit SST Starter
 
-Bootstrap your next SaaS project with this SvelteKit + PocketBase + SST template. :rocket:
+Bootstrap your next SaaS project with this SvelteKit + Supabase + SST template. :rocket:
 
 ## Roadmap
 
@@ -8,17 +8,17 @@ Bootstrap your next SaaS project with this SvelteKit + PocketBase + SST template
 
 - [x] Generate [Skeleton](https://www.skeleton.dev) project
 - [x] Add [SST](https://sst.dev)
-- [x] Add [PocketBase](https://pocketbase.io)
+- [x] Add [Supabase](https://supabase.com)
 - [x] Add [Lucide](https://lucide.dev/)
 - [x] Add [Zod](https://github.com/colinhacks/zod)
 - [x] Add [SuperForms](https://github.com/ciscoheat/sveltekit-superforms)
-- [ ] Add User Management
+- [x] Add User Management
   - [x] Login
   - [x] Logout
   - [x] Register
   - [x] Reset password
   - [x] Email verification
-  - [ ] Simple user dashboard
+  - [x] Simple user dashboard
 - [ ] Add [inlang](https://github.com/inlang/inlang)
 - [ ] Add logging system following [this](https://sst.dev/chapters/setup-error-logging-in-serverless.html) using [Winston](http://github.com/winstonjs/winston)
 - [ ] Add [Bruno](https://www.usebruno.com)
@@ -53,3 +53,11 @@ pnpm run build
 You can preview the production build with `pnpm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Deploy
+
+```bash
+pnpm sst secrets set PUBLIC_SUPABASE_URL supabaseUrlValue
+pnpm sst secrets set PUBLIC_SUPABASE_ANON_KEY supabaseAnonKeyValue
+pnpm sst deploy --stage prod
+```

@@ -52,7 +52,9 @@
   "type": "module",
   "dependencies": {
     "@floating-ui/dom": "1.5.3",
-    "lucide-svelte": "^0.291.0",
-    "pocketbase": "^0.19.0"
+    "@supabase/ssr": "^0.0.9",
+    "@supabase/supabase-js": "^2.38.4",
+    "install": "^0.13.0",
+    "lucide-svelte": "^0.291.0"
   }
 }

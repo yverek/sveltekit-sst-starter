@@ -1,5 +1,5 @@
 import type { SSTConfig } from "sst";
-import { SvelteKitSite } from "sst/constructs";
+import { SvelteKitSite, Config } from "sst/constructs";
 
 export default {
   config(_input) {
@@ -10,7 +10,13 @@ export default {
   },
   stacks(app) {
     app.stack(function Site({ stack }) {
-      const site = new SvelteKitSite(stack, "site");
+      const SUPABASE_URL = new Config.Secret(stack, "SUPABASE_URL");
+      const SUPABASE_ANON_KEY = new Config.Secret(stack, "SUPABASE_ANON_KEY");
+
+      const site = new SvelteKitSite(stack, "site", {
+        bind: [SUPABASE_URL, SUPABASE_ANON_KEY]
+      });
+
       stack.addOutputs({
         url: site.url
       });

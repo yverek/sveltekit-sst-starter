@@ -1,8 +1,8 @@
-import { ClientResponseError } from "pocketbase";
 import { message, superValidate } from "sveltekit-superforms/server";
 import { redirect, type Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import { loginFormSchema } from "$lib/zod-schemas";
+import { AuthApiError } from "@supabase/supabase-js";
 
 export const load = (async ({ url }) => {
   const message = url.searchParams.get("redirectTo") && "You must be logged in to access this page";
@@ -14,7 +14,7 @@ export const load = (async ({ url }) => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-  default: async ({ request, locals, url }) => {
+  default: async ({ request, locals: { supabase }, url }) => {
     const form = await superValidate(request, loginFormSchema);
 
     if (!form.valid) {
@@ -23,25 +23,36 @@ export const actions = {
       return message(form, "Invalid form");
     }
 
-    try {
-      const user = await locals.pb.collection("users").authWithPassword(form.data.email, form.data.password);
+    const { email, password } = form.data;
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
 
-      const { verified } = user.record;
-
-      if (!verified) {
-        locals.pb.authStore.clear();
-
-        return message(form, "You must verify your email to login", { status: 401 });
-      }
-    } catch (error) {
-      if (error instanceof ClientResponseError) {
-        const { code, message } = error.response;
-
-        return message(form, message, { status: code });
+    if (error) {
+      if (error instanceof AuthApiError && error.status === 400) {
+        return message(form, "Invalid credentials", { status: 400 });
       }
 
       return message(form, "Something went wrong", { status: 500 });
     }
+
+    // try {
+    //   const user = await locals.pb.collection("users").authWithPassword(form.data.email, form.data.password);
+
+    //   const { verified } = user.record;
+
+    //   if (!verified) {
+    //     locals.pb.authStore.clear();
+
+    //     return message(form, "You must verify your email to login", { status: 401 });
+    //   }
+    // } catch (error) {
+    //   if (error instanceof ClientResponseError) {
+    //     const { code, message } = error.response;
+
+    //     return message(form, message, { status: code });
+    //   }
+
+    //   return message(form, "Something went wrong", { status: 500 });
+    // }
 
     let redirectTo = url.searchParams.get("redirectTo");
 

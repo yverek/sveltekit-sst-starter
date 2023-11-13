@@ -1,28 +1,37 @@
+import { createServerClient } from "@supabase/ssr";
 import type { Handle } from "@sveltejs/kit";
-import PocketBase from "pocketbase";
-import { POCKETBASE_URL } from "$env/static/private";
+import { Config } from "sst/node/config";
+import type { Database } from "./database.types";
 
 export const handle: Handle = async ({ event, resolve }) => {
-  event.locals.pb = new PocketBase(POCKETBASE_URL);
-
-  event.locals.pb.authStore.loadFromCookie(event.request.headers.get("cookie") || "");
-
-  try {
-    if (event.locals.pb.authStore.isValid) {
-      await event.locals.pb.collection("users").authRefresh();
-
-      event.locals.user = structuredClone(event.locals.pb.authStore.model);
+  event.locals.supabase = createServerClient<Database>(Config.SUPABASE_URL, Config.SUPABASE_ANON_KEY, {
+    cookies: {
+      get: (key) => event.cookies.get(key),
+      set: (key, value, options) => {
+        event.cookies.set(key, value, options);
+      },
+      remove: (key, options) => {
+        event.cookies.delete(key, options);
+      }
     }
-  } catch (err) {
-    // Clear the authStore if there is an error
-    event.locals.pb.authStore.clear();
-    event.locals.user = null;
-  }
+  });
 
-  const response = await resolve(event);
+  /**
+   * a little helper that is written for convenience so that instead
+   * of calling `const { data: { session } } = await supabase.auth.getSession()`
+   * you just call this `await getSession()`
+   */
+  event.locals.getSession = async () => {
+    const {
+      data: { session }
+    } = await event.locals.supabase.auth.getSession();
 
-  const isProd = process.env.NODE_ENV === "production";
-  response.headers.append("set-cookie", event.locals.pb.authStore.exportToCookie({ secure: isProd }));
+    return session;
+  };
 
-  return response;
+  return resolve(event, {
+    filterSerializedResponseHeaders(name) {
+      return name === "content-range";
+    }
+  });
 };

@@ -8,7 +8,7 @@ import { EMAIL_MIN_LEN, EMAIL_MAX_LEN, PASSWORD_MIN_LEN, PASSWORD_MAX_LEN } from
  *  - One number
  *  - One special character
  */
-const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[A-Za-z0-9!@#$%^&*()_+]{8,}$/;
+const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[ !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z0-9 !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{8,}$/;
 
 // TODO translate this
 const loginFormSchema = z.object({
